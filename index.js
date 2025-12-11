@@ -1,7 +1,14 @@
 import fetch from 'node-fetch';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({
+	path: path.resolve(__dirname, './.env'),
+});
 
 const projects = [
 	{
@@ -10,8 +17,19 @@ const projects = [
 		key: process.env.SUPABASE_KEY_API_ALUNOS,
 	},
 	{
+		name: 'api-alunos',
+		url: 'https://front-end-alunos.vercel.app/',
+		key: process.env.SUPABASE_KEY_API_ALUNOS,
+	},
+	{
 		name: 'Tp-amigo-screto',
 		url: 'https://toxrimyniktcermdllph.supabase.co/rest/v1/',
+		key: process.env.SUPABASE_KEY_AMIGO_SECRETO,
+	},
+
+	{
+		name: 'Tp-amigo-screto',
+		url: 'https://tp-amigo-secreto.vercel.app/application/grupos',
 		key: process.env.SUPABASE_KEY_AMIGO_SECRETO,
 	},
 ];
